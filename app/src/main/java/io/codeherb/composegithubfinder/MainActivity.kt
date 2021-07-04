@@ -3,6 +3,7 @@ package io.codeherb.composegithubfinder
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,15 +20,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import io.codeherb.composegithubfinder.presentation.SampleScreen
 import io.codeherb.composegithubfinder.presentation.Screen
+import io.codeherb.composegithubfinder.presentation.controller.MainViewModel
 import io.codeherb.composegithubfinder.presentation.infinitylist.InfinityListScreen
 import io.codeherb.composegithubfinder.presentation.inputtext.InputTextWithStateScreen
 import io.codeherb.composegithubfinder.presentation.main.MainScreen
 import io.codeherb.composegithubfinder.presentation.paging3.InfinityListWithPaging3Screen
 import io.codeherb.composegithubfinder.ui.theme.ComposeGithubFinderTheme
 
-class MainActivity : ComponentActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
     @ExperimentalComposeUiApi
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {

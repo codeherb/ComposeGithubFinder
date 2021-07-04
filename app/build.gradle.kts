@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -64,15 +65,33 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Versions.compose}")
 
+    // For DI - Hilt
+    implementation("com.google.dagger:hilt-android:${Versions.hilt}")
+    kapt("com.google.dagger:hilt-android-compiler:${Versions.hilt}")
+
     // >>> Jetpack Compose
     // 1. ConstraintLayout for Compose
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha08")
     // 2. Navigation for Compose
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha03")
+    //implementation("androidx.navigation:navigation-compose:2.4.0-alpha03")
     // 3. Paging for Compose
     implementation("androidx.paging:paging-compose:1.0.0-alpha10")
     implementation("com.google.accompanist:accompanist-coil:0.11.1")
 
+    // 4. Hilt with Navigation
+    // 힐트에서 다른 Jetpack 라이브러리의 기능을 제공하기 위한 확장
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
 
-    //    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha02")
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:${Versions.retrofit}")
+    implementation("com.squareup.retrofit2:converter-gson:${Versions.retrofit}")
+
+    // Room
+    implementation("androidx.room:room-ktx:${Versions.room}")
+    kapt("androidx.room:room-compiler:${Versions.room}")
+}
+
+kapt {
+    correctErrorTypes=true
 }

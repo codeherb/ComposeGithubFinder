@@ -49,34 +49,3 @@ enum class SampleScreen {
     InfinityList,
     InfinityListWithPaging3
 }
-
-@Composable
-fun GithubUserCard(name: String, onClick: () -> Unit = {}) {
-    val painter = rememberCoilPainter(
-        request = "https://picsum.photos/300/300",
-        previewPlaceholder = io.codeherb.composegithubfinder.R.drawable.ic_launcher_background,
-    )
-    Row(modifier = Modifier.clickable(onClick = onClick)) {
-        Box(modifier = Modifier.size(100.dp)) {
-            Image(
-                painter = painter,
-                contentDescription = null
-            )
-            if (painter.loadState is ImageLoadState.Loading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }
-        }
-
-        Column(
-            modifier = Modifier
-                .padding(start = 8.dp)
-                .align(Alignment.CenterVertically)
-        ) {
-            Text(text = name, fontWeight = FontWeight.Bold)
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                Text("3 minutes ago", style = MaterialTheme.typography.body2)
-            }
-        }
-    }
-
-}

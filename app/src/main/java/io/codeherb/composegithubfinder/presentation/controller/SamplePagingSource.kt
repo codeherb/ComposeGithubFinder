@@ -27,6 +27,6 @@ class SamplePagingSource(
     }
 
     companion object {
-        const val INITIAL_POSITION = 0
+        const val INITIAL_POSITION = 1
     }
 }
